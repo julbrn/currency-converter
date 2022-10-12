@@ -10,7 +10,7 @@ function App() {
           <div className="container">
             <h1 className="header">Currency Converter</h1>
             <CurrencyRow/>
-              <div>=</div>
+              <div class="equation">=</div>
             <CurrencyRow/>
           </div>
       </div>
