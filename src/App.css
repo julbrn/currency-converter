@@ -9,6 +9,11 @@ html {
   justify-content: center;
 }
 
+::selection {
+  color: #dc9fdf;
+  background: #fce6c0;
+}
+
 .page {
   display: flex;
   flex-direction: column;

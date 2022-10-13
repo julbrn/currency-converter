@@ -18,7 +18,11 @@ html {
   margin: 0 auto;
   @include flex-column;
   justify-content: center;
+}
 
+::selection {
+  color: #dc9fdf;
+  background: #fce6c0;
 }
 
 .page {

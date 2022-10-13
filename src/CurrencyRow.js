@@ -42,11 +42,11 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function CurrencyRow() {
-    const [currency, setCurrency] = React.useState('');
-    const handleChange = (event) => {
-        setCurrency(event.target.value);
-    };
+export default function CurrencyRow({currency}) {
+    //const [currency, setCurrency] = React.useState('');
+    //const handleChange = (event) => {
+     //   setCurrency(event.target.value);
+    //};
     return (
         <div>
             <FormControl sx={{ m: 1 }} variant="standard">
@@ -57,14 +57,14 @@ export default function CurrencyRow() {
                 <InputLabel2 htmlFor="demo-customized-select-native">Currency</InputLabel2>
                 <NativeSelect
                     id="demo-customized-select-native"
-                    value={currency}
-                    onChange={handleChange}
+                    //value={currency}
+                    //onChange={handleChange}
                     input={<BootstrapInput />}
                 >
                     <option aria-label="None" value="" />
-                    <option value={10}>RUB</option>
-                    <option value={20}>EUR</option>
-                    <option value={30}>USD</option>
+                    {currency.map(option =>(
+                        <option value={option}>{option}</option>
+                    ))}
                 </NativeSelect>
             </FormControl>
         </div>
