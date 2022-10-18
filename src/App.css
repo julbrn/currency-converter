@@ -25,6 +25,11 @@ html {
   width: 450px;
   height: 100%;
 }
+@media only screen and (max-width: 460px) {
+  .picture {
+    width: 92vw;
+  }
+}
 
 .container {
   background-color: #fff;
@@ -35,10 +40,20 @@ html {
   width: 400px;
   height: 380px;
 }
+@media only screen and (max-width: 460px) {
+  .container {
+    width: 90vw;
+  }
+}
 .container .header {
   color: #31d4ab;
   margin: 35px 0;
   font-weight: 500;
+}
+@media only screen and (max-width: 460px) {
+  .container .header {
+    font-size: 30px;
+  }
 }
 .container .equation {
   font-weight: 500;

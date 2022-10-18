@@ -29,7 +29,6 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
         color: '#5A5A5A',
         padding: '10px 26px 10px 12px',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
-        // Use the system font instead of the default Roboto font.
         fontFamily: [
             'Quicksand',
             'sans-serif',
@@ -42,26 +41,22 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function CurrencyRow({currency, amount, onChangeAmount}) {
-    //const [currency, setCurrency] = React.useState('');
-    //const handleChange = (event) => {
-     //   setCurrency(event.target.value);
-    //};
+export default function CurrencyRow({currencies, currency, amount, onChangeAmount, onChangeCurrency}) {
     return (
         <div>
             <FormControl sx={{ m: 1 }} variant="standard">
                 <InputLabel2 htmlFor="demo-customized-textbox">Sum</InputLabel2>
-                <BootstrapInput id="demo-customized-textbox" value={amount} onChange={onChangeAmount}/>
+                <BootstrapInput id="demo-customized-textbox" value={amount} onChange={e => onChangeAmount(e.target.value)}/>
             </FormControl>
             <FormControl sx={{ m: 1 }} variant="standard">
                 <InputLabel2 htmlFor="demo-customized-select-native">Currency</InputLabel2>
                 <NativeSelect
                     id="demo-customized-select-native"
-                    //value={currency}
-                    //onChange={handleChange}
+                    value={currency}
+                    onChange={e => onChangeCurrency(e.target.value)}
                     input={<BootstrapInput />}
                 >
-                    {currency.map(option =>(
+                    {currencies.map(option =>(
                         <option key={option} value={option}>{option}</option>
                     ))}
                 </NativeSelect>

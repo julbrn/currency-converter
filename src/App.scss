@@ -4,10 +4,17 @@ $bright-green: #31d4ab;
 $bright-orange: #ffcf87;
 $bold-font: 500;
 $thin-font: 300;
+$breakpoint: 460px;
 
 @mixin flex-column {
   display: flex;
   flex-direction: column;
+}
+
+@mixin devices {
+  @media only screen and (max-width: $breakpoint) {
+    @content
+  }
 }
 
 html {
@@ -34,6 +41,10 @@ html {
 .picture {
   width: 450px;
   height: 100%;
+
+  @include devices {
+    width: 92vw;
+  }
 }
 
 
@@ -45,10 +56,18 @@ html {
   width: 400px;
   height: 380px;
 
+  @include devices {
+    width: 90vw;
+  }
+
   .header {
     color: $bright-green;
     margin: 35px 0;
     font-weight: $bold-font;
+
+    @include devices {
+      font-size: 30px;
+    }
   }
   .equation {
     font-weight: $bold-font;
@@ -71,3 +90,4 @@ html {
     transform: scale(1.2);
   }
 }
+
