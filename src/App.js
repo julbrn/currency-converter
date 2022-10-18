@@ -15,13 +15,36 @@ const BASE_URL = 'https://api.apilayer.com/exchangerates_data/latest'
 
 function App() {
     const [currency, setCurrency] = useState([]);
-    console.log(currency);
+    const [exchangeRate, setExchangeRate] = useState(1);
+    const [amount, setAmount] = useState(1);
+    const [amountFromToCurrency, setAmountFromToCurrency] = useState(true);
+    let toAmount, fromAmount;
+    if (amountFromToCurrency) {
+        fromAmount = amount;
+        toAmount = amount * exchangeRate
+    }
+    else {
+        toAmount = amount;
+        fromAmount = amount / exchangeRate
+    }
+
+    function handleFromAmountChange(e) {
+        setAmount(e.target.value);
+        setAmountFromToCurrency(true)
+    }
+
+    function handleToAmountChange(e) {
+        setAmount(e.target.value);
+        setAmountFromToCurrency(false)
+    }
+
     useEffect(() => {
         fetch(`${BASE_URL}`, requestOptions)
             .then(res => res.json())
             .then(data => {
-                //console.log(data);
-                setCurrency([data.base, ...Object.keys(data.rates)])
+                setCurrency(['', ...Object.keys(data.rates)]);
+                setExchangeRate(Object.values(data.rates)[1]);
+                console.log(Object.values(data.rates)[1])
             })
             .catch(error => console.log('error', error));
     }, [])
@@ -33,10 +56,15 @@ function App() {
             <h1 className="header">Currency Converter</h1>
             <CurrencyRow
                 currency={currency}
+                onChangeAmount={handleFromAmountChange}
+                amount={fromAmount}
             />
               <div className="equation">=</div>
             <CurrencyRow
-                currency={currency}/>
+                currency={currency}
+                onChangeAmount={handleToAmountChange}
+                amount={toAmount}
+            />
           </div>
       </div>
   );

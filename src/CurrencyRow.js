@@ -42,7 +42,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function CurrencyRow({currency}) {
+export default function CurrencyRow({currency, amount, onChangeAmount}) {
     //const [currency, setCurrency] = React.useState('');
     //const handleChange = (event) => {
      //   setCurrency(event.target.value);
@@ -51,7 +51,7 @@ export default function CurrencyRow({currency}) {
         <div>
             <FormControl sx={{ m: 1 }} variant="standard">
                 <InputLabel2 htmlFor="demo-customized-textbox">Sum</InputLabel2>
-                <BootstrapInput id="demo-customized-textbox" />
+                <BootstrapInput id="demo-customized-textbox" value={amount} onChange={onChangeAmount}/>
             </FormControl>
             <FormControl sx={{ m: 1 }} variant="standard">
                 <InputLabel2 htmlFor="demo-customized-select-native">Currency</InputLabel2>
@@ -61,9 +61,8 @@ export default function CurrencyRow({currency}) {
                     //onChange={handleChange}
                     input={<BootstrapInput />}
                 >
-                    <option aria-label="None" value="" />
                     {currency.map(option =>(
-                        <option value={option}>{option}</option>
+                        <option key={option} value={option}>{option}</option>
                     ))}
                 </NativeSelect>
             </FormControl>
