@@ -23,6 +23,9 @@ function App() {
     useEffect(() => {
         if(!!exchangeRate) {
             handleChangeAmount1(amount1)
+        }
+        if (exchangeRate.length == 0) {
+            setAmount2('...')
         }}, [exchangeRate])
 
     useEffect(() => {
@@ -30,7 +33,6 @@ function App() {
             .then(res => res.json())
             .then(res => {
                 setExchangeRate(res.rates);
-                console.log(typeof amount2)
             })
             .catch(error => console.log('error', error));
     }, [])

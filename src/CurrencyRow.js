@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import NativeSelect from '@mui/material/NativeSelect';
 import InputBase from '@mui/material/InputBase';
+import PropTypes from 'prop-types';
 
 const InputLabel2 = styled(InputLabel) `
   &.MuiInputLabel-root {
@@ -63,4 +64,15 @@ export default function CurrencyRow({currencies, currency, amount, onChangeAmoun
             </FormControl>
         </div>
     );
+}
+
+CurrencyRow.propTypes = {
+    currencies: PropTypes.array.isRequired,
+    currency: PropTypes.string.isRequired,
+    amount: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ]),
+    onChangeAmount: PropTypes.func.isRequired,
+    onChangeCurrency: PropTypes.func.isRequired,
 }
