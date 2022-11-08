@@ -1,6 +1,6 @@
 # Приложение React для конвертации валют
 
-<img src="./src/images/converter.gif" alt="Example of currency conversion"/>
+<img src="./src/images/screenshot.png" alt="Example of currency conversion"/>
 
 ### Цели проекта
 - использование PropTypes;
