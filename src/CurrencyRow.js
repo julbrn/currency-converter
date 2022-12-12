@@ -47,7 +47,7 @@ export default function CurrencyRow({currencies, currency, amount, onChangeAmoun
         <div>
             <FormControl sx={{ m: 1 }} variant="standard">
                 <InputLabel2 htmlFor="demo-customized-textbox">Sum</InputLabel2>
-                <BootstrapInput id="demo-customized-textbox" value={amount} onChange={e => onChangeAmount(e.target.value)}/>
+                <BootstrapInput id="demo-customized-textbox" type="number" value={amount} onChange={e => onChangeAmount(e.target.value)}/>
             </FormControl>
             <FormControl sx={{ m: 1 }} variant="standard">
                 <InputLabel2 htmlFor="demo-customized-select-native">Currency</InputLabel2>
